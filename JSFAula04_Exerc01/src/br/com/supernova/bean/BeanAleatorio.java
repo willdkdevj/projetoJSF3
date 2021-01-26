@@ -18,9 +18,26 @@ public class BeanAleatorio{
 	public String processar(){
 		
 		Random rd = new Random();
+		Integer checar, resultado;
+		resultado = 0;
 		
-		for(int i=0; i < qtdNumeros; i++){			
-			int resultado = rd.nextInt(vlrMx - vlrMn) + vlrMn + 1;
+		for(int i=0; i < qtdNumeros; i++){
+			
+			checar = rd.nextInt(vlrMx - vlrMn) + vlrMn + 1;
+			for (Integer n : retorno) {
+				if (checar == n) {
+					resultado = checar;
+					break;
+				}
+			}
+			
+			if (resultado == checar || resultado == null) {
+				--i;
+				continue;
+			}
+			
+			resultado = checar; 
+			System.out.println(resultado);
 			retorno.add(resultado);
 		}
 		
